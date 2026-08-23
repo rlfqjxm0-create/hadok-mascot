@@ -1,13 +1,13 @@
 {
- "version": 1787486635,
+ "version": 1787487058,
  "files": {
-  "mascot.py": "0c423d7a46798a9a307f0f2a53a4b47ea560737e56d8a7738ebbecd76d8dfd72",
+  "mascot.py": "a953dafbe8b7c55f155db182d4df8d8de42add3f6b1458209157bcadb0e1ab21",
   "parts_hadok/arm_key.png": "f0f3f184cd77da7bb7f5860c835a0f7e403128cb042e698a4fb0c7d9fb1b4579",
   "parts_hadok/arm_pen.png": "65b9d53a27ff4fd6ca69feceb1cddbb85c3f47d71f09c7cdc892e699478d7a66",
   "parts_hadok/arm_right.png": "e0449e0926b9d71e9614bdf60fa6f08fbe48fac71a2231815251f8b44dc8aba6",
   "parts_hadok/arm_right_typing.png": "4a90cc05e7f4237de78f2d8293452ade7a4a12349a0b1493454c637f1fdcac2f",
   "parts_hadok/body_open.png": "4994566c95c7bf7bef08ff5101d7050d6c0e0332f5cfee48c9f66dcb68d089be",
-  "parts_hadok/config.json": "f72e8198d3bc53ac10b8f0a48e8d0de033dd5c1eb30fb3d43f6ae73cb8a91041",
+  "parts_hadok/config.json": "5ccffaf6bb513416bce4ceb7437f555c3646fae70909acb103a81108848c4462",
   "parts_hadok/desk.png": "5c65f2b153ae2858ff26ccb4adf60ddca2978b0df1f55f38eab8dba25a38e9c1",
   "parts_hadok/eyes_closed.png": "f721b2800c5083c8cc536f74b38a76a64f7345821e61ed2d17ab6b5af0fcf979",
   "parts_hadok/head.png": "b6ec7a4c4e79045536111af34ec30b789139335440e7b7ed598d727a581593b4",

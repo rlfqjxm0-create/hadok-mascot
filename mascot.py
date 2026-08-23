@@ -7147,12 +7147,13 @@ class Mascot:
                            (mx + 16, cy0 - 23), (mx + 16, cy0 - 1),
                            (mx + 6, cy0 + 9), (mx - 14, cy0 + 9)],
                           fill=(0, 0, 0, 255))
-            elif deco == "cobra":                  # 하독: 코브라 실루엣
-                d.polygon([(mx - 25, cy0 + 8), (mx - 20, cy0 - 15),
-                           (mx, cy0 - 24), (mx + 20, cy0 - 15),
-                           (mx + 25, cy0 + 8)], fill=(0, 0, 0, 255))
-                d.ellipse([mx - 8, cy0 - 32, mx + 8, cy0 - 17],
+            elif deco == "heart":                  # 하독: 하트 실루엣
+                d.ellipse([mx - 17, cy0 - 24, mx - 1, cy0 - 8],
                           fill=(0, 0, 0, 255))
+                d.ellipse([mx + 1, cy0 - 24, mx + 17, cy0 - 8],
+                          fill=(0, 0, 0, 255))
+                d.polygon([(mx - 17, cy0 - 16), (mx + 17, cy0 - 16),
+                           (mx, cy0 + 6)], fill=(0, 0, 0, 255))
             elif deco == "tangerine":              # 레냥: 귤 실루엣
                 d.ellipse([mx - 16, cy0 - 15, mx + 16, cy0 + 13],
                           fill=(0, 0, 0, 255))
@@ -11600,27 +11601,20 @@ class Mascot:
                              fill=side, outline=line, width=2)
             self._oval(c, mx - 10, y0 - 20, mx - 2, y0 - 16,
                        fill="#ffffff", outline="")
-        elif deco == "cobra":
-            # 하독: 목을 편 코브라 (후드 + 머리 + 갈라진 혀)
+        elif deco == "heart":
+            # 하독: 파란 하트 (몸도 하트 모양이다)
             mx = (x0 + x1) / 2
             body, dark = "#3f6fd6", "#1e2f66"
-            # 카드 위로 나오는 것은 y0 위쪽뿐이다 — 후드를 넓게 펴고
-            # 머리를 올려야 '코브라'로 읽힌다 (찍어서 맞췄다).
-            c.create_polygon(mx - 25, y0 + 8, mx - 20, y0 - 15,
-                             mx, y0 - 24, mx + 20, y0 - 15,
-                             mx + 25, y0 + 8, smooth=True,
+            # 끝점을 세 번 겹쳐 찍어 아래를 뾰족하게 한다 — Tk 의 smooth 는
+            # 꼭짓점을 조종점으로 쓰므로 한 번만 찍으면 뭉툭해진다 (지뢰 120).
+            c.create_polygon(mx, y0 + 6, mx, y0 + 6, mx, y0 + 6,
+                             mx - 17, y0 - 10, mx - 17, y0 - 20,
+                             mx - 8, y0 - 24, mx, y0 - 16,
+                             mx + 8, y0 - 24, mx + 17, y0 - 20,
+                             mx + 17, y0 - 10, smooth=True,
                              fill=body, outline=dark, width=2)
-            self._oval(c, mx - 8, y0 - 32, mx + 8, y0 - 17,
-                       fill="#5183e6", outline=dark, width=2)
-            for ex in (mx - 4, mx + 4):
-                self._oval(c, ex - 2, y0 - 28, ex + 2, y0 - 24,
-                           fill=dark, outline="")
-            c.create_line(mx, y0 - 19, mx, y0 - 12, fill="#d63b4e",
-                          width=2, capstyle="round")
-            c.create_line(mx, y0 - 12, mx - 4, y0 - 8, fill="#d63b4e",
-                          width=2, capstyle="round")
-            c.create_line(mx, y0 - 12, mx + 4, y0 - 8, fill="#d63b4e",
-                          width=2, capstyle="round")
+            self._oval(c, mx - 12, y0 - 19, mx - 5, y0 - 14,
+                       fill="#8fb0f0", outline="")
         elif deco == "tangerine":
             # 레냥: 귤 한 알 (열매 + 초록 꼭지잎)
             mx = (x0 + x1) / 2
@@ -17984,16 +17978,13 @@ class Mascot:
                 cv.create_polygon(mx + 7, y + 2, mx + 18, y - 9,
                                   mx + 18, y + 13, mx + 7, y + 24,
                                   fill="#86c8ee", outline="#3f5560", width=2)
-            elif deco == "cobra":              # 하독: 목을 편 코브라
-                cv.create_polygon(mx - 23, y + 24, mx - 17, y + 2,
-                                  mx, y - 4, mx + 17, y + 2,
-                                  mx + 23, y + 24, smooth=True,
+            elif deco == "heart":              # 하독: 파란 하트
+                cv.create_polygon(mx, y + 26, mx, y + 26, mx, y + 26,
+                                  mx - 19, y + 8, mx - 19, y - 3,
+                                  mx - 9, y - 8, mx, y + 1,
+                                  mx + 9, y - 8, mx + 19, y - 3,
+                                  mx + 19, y + 8, smooth=True,
                                   fill="#3f6fd6", outline="#1e2f66", width=2)
-                self._oval(cv, mx - 10, y - 12, mx + 10, y + 5,
-                               fill="#5183e6", outline="#1e2f66", width=2)
-                for ex2 in (mx - 4, mx + 4):
-                    self._oval(cv, ex2 - 2, y - 7, ex2 + 2, y - 3,
-                                   fill="#1e2f66", outline="")
             elif deco == "tangerine":          # 레냥: 귤 한 알
                 self._oval(cv, mx - 19, y - 8, mx + 19, y + 24,
                                fill="#f5a623", outline="#c97c12", width=2)
