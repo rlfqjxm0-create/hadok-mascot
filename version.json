@@ -1,7 +1,7 @@
 {
- "version": 1787499267,
+ "version": 1787499581,
  "files": {
-  "mascot.py": "092c78e5cc63e9070d024e93aabf1a49913f0cca641590f06971649024f99ddc",
+  "mascot.py": "36d5fbb809ccc2d0eb5da7e3e78a7202f56eee1bae7c5eb891fcb2c87753a9bc",
   "parts_hadok/arm_key.png": "f0f3f184cd77da7bb7f5860c835a0f7e403128cb042e698a4fb0c7d9fb1b4579",
   "parts_hadok/arm_pen.png": "65b9d53a27ff4fd6ca69feceb1cddbb85c3f47d71f09c7cdc892e699478d7a66",
   "parts_hadok/arm_right.png": "e0449e0926b9d71e9614bdf60fa6f08fbe48fac71a2231815251f8b44dc8aba6",
@@ -469,6 +469,8 @@
   "stickers/__init__.py": "d77e3dc92cb353dced8d192c140643c6458bc3901facdf2e0a0d0830fa4244b7",
   "youtube_player.py": "958da4bd526d867ec8250db02da4729ceb168664c04419091fe6ebf040122f80"
  },
- "notes": [],
- "silent": true
+ "notes": [
+  "모두의 플레이리스트를 트는 동안 타이머 위 단추가 셋이 됐어요 — 이전곡·재생/멈춤·다음곡. 곡을 편하게 넘겨 보세요.",
+  "홈의 방 꾸미기 그림이 훨씬 가볍게 전달되도록 통신을 아꼈어요. 바꾼 그림은 예전처럼 바로 보여요."
+ ]
 }
