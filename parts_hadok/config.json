@@ -86,7 +86,8 @@
   "sub": "#7c88b0",
   "panel": "#f8f9ff",
   "soft": "#e9edfb",
-  "line": "#d6ddf4"
+  "line": "#d6ddf4",
+  "deco": "cobra"
  },
  "titles": [
   [
@@ -233,7 +234,7 @@
  "level": true,
  "update_dot": true,
  "typing_arm": true,
- "card_top": 26,
+ "card_top": 38,
  "slime": {
   "kinds": {
    "말랑이": {

@@ -7142,6 +7142,17 @@ class Mascot:
             elif deco == "sushi":                  # 연어: 초밥 실루엣
                 d.ellipse([mx - 23, cy0 - 17, mx + 23, cy0 + 12],
                           fill=(0, 0, 0, 255))
+            elif deco == "ice":                    # 깅규: 각얼음 실루엣
+                d.polygon([(mx - 14, cy0 - 13), (mx - 4, cy0 - 23),
+                           (mx + 16, cy0 - 23), (mx + 16, cy0 - 1),
+                           (mx + 6, cy0 + 9), (mx - 14, cy0 + 9)],
+                          fill=(0, 0, 0, 255))
+            elif deco == "cobra":                  # 하독: 코브라 실루엣
+                d.polygon([(mx - 25, cy0 + 8), (mx - 20, cy0 - 15),
+                           (mx, cy0 - 24), (mx + 20, cy0 - 15),
+                           (mx + 25, cy0 + 8)], fill=(0, 0, 0, 255))
+                d.ellipse([mx - 8, cy0 - 32, mx + 8, cy0 - 17],
+                          fill=(0, 0, 0, 255))
             elif deco == "tangerine":              # 레냥: 귤 실루엣
                 d.ellipse([mx - 16, cy0 - 15, mx + 16, cy0 + 13],
                           fill=(0, 0, 0, 255))
@@ -11573,6 +11584,43 @@ class Mascot:
                 sx2, cy2 = mx + dx2, y0 - 8
                 c.create_line(sx2 - 4, cy2 + half, sx2 + 4, cy2 - half,
                               fill="#f8cfb6", width=2, capstyle="round")
+        elif deco == "ice":
+            # 깅규: 각얼음 한 덩이 (윗면·앞면·옆면으로 각을 낸다)
+            mx = (x0 + x1) / 2
+            top, front, side = "#dcf2fd", "#a9ddf8", "#86c8ee"
+            line = "#3f5560"
+            c.create_polygon(mx - 14, y0 - 13, mx - 4, y0 - 23,
+                             mx + 16, y0 - 23, mx + 6, y0 - 13,
+                             fill=top, outline=line, width=2)
+            c.create_polygon(mx - 14, y0 - 13, mx + 6, y0 - 13,
+                             mx + 6, y0 + 9, mx - 14, y0 + 9,
+                             fill=front, outline=line, width=2)
+            c.create_polygon(mx + 6, y0 - 13, mx + 16, y0 - 23,
+                             mx + 16, y0 - 1, mx + 6, y0 + 9,
+                             fill=side, outline=line, width=2)
+            self._oval(c, mx - 10, y0 - 20, mx - 2, y0 - 16,
+                       fill="#ffffff", outline="")
+        elif deco == "cobra":
+            # 하독: 목을 편 코브라 (후드 + 머리 + 갈라진 혀)
+            mx = (x0 + x1) / 2
+            body, dark = "#3f6fd6", "#1e2f66"
+            # 카드 위로 나오는 것은 y0 위쪽뿐이다 — 후드를 넓게 펴고
+            # 머리를 올려야 '코브라'로 읽힌다 (찍어서 맞췄다).
+            c.create_polygon(mx - 25, y0 + 8, mx - 20, y0 - 15,
+                             mx, y0 - 24, mx + 20, y0 - 15,
+                             mx + 25, y0 + 8, smooth=True,
+                             fill=body, outline=dark, width=2)
+            self._oval(c, mx - 8, y0 - 32, mx + 8, y0 - 17,
+                       fill="#5183e6", outline=dark, width=2)
+            for ex in (mx - 4, mx + 4):
+                self._oval(c, ex - 2, y0 - 28, ex + 2, y0 - 24,
+                           fill=dark, outline="")
+            c.create_line(mx, y0 - 19, mx, y0 - 12, fill="#d63b4e",
+                          width=2, capstyle="round")
+            c.create_line(mx, y0 - 12, mx - 4, y0 - 8, fill="#d63b4e",
+                          width=2, capstyle="round")
+            c.create_line(mx, y0 - 12, mx + 4, y0 - 8, fill="#d63b4e",
+                          width=2, capstyle="round")
         elif deco == "tangerine":
             # 레냥: 귤 한 알 (열매 + 초록 꼭지잎)
             mx = (x0 + x1) / 2
@@ -17926,6 +17974,26 @@ class Mascot:
                     cv.create_line(sx2 - 4, y + half, sx2 + 4, y - half,
                                    fill="#f8cfb6", width=2,
                                    capstyle="round")
+            elif deco == "ice":                # 깅규: 각얼음
+                cv.create_polygon(mx - 16, y + 2, mx - 5, y - 9,
+                                  mx + 18, y - 9, mx + 7, y + 2,
+                                  fill="#dcf2fd", outline="#3f5560", width=2)
+                cv.create_polygon(mx - 16, y + 2, mx + 7, y + 2,
+                                  mx + 7, y + 24, mx - 16, y + 24,
+                                  fill="#a9ddf8", outline="#3f5560", width=2)
+                cv.create_polygon(mx + 7, y + 2, mx + 18, y - 9,
+                                  mx + 18, y + 13, mx + 7, y + 24,
+                                  fill="#86c8ee", outline="#3f5560", width=2)
+            elif deco == "cobra":              # 하독: 목을 편 코브라
+                cv.create_polygon(mx - 23, y + 24, mx - 17, y + 2,
+                                  mx, y - 4, mx + 17, y + 2,
+                                  mx + 23, y + 24, smooth=True,
+                                  fill="#3f6fd6", outline="#1e2f66", width=2)
+                self._oval(cv, mx - 10, y - 12, mx + 10, y + 5,
+                               fill="#5183e6", outline="#1e2f66", width=2)
+                for ex2 in (mx - 4, mx + 4):
+                    self._oval(cv, ex2 - 2, y - 7, ex2 + 2, y - 3,
+                                   fill="#1e2f66", outline="")
             elif deco == "tangerine":          # 레냥: 귤 한 알
                 self._oval(cv, mx - 19, y - 8, mx + 19, y + 24,
                                fill="#f5a623", outline="#c97c12", width=2)
