@@ -7148,12 +7148,12 @@ class Mascot:
                            (mx + 6, cy0 + 9), (mx - 14, cy0 + 9)],
                           fill=(0, 0, 0, 255))
             elif deco == "heart":                  # 하독: 하트 실루엣
-                d.ellipse([mx - 17, cy0 - 24, mx - 1, cy0 - 8],
+                d.ellipse([mx - 18.5, cy0 - 32, mx + 0.5, cy0 - 13],
                           fill=(0, 0, 0, 255))
-                d.ellipse([mx + 1, cy0 - 24, mx + 17, cy0 - 8],
+                d.ellipse([mx - 0.5, cy0 - 32, mx + 18.5, cy0 - 13],
                           fill=(0, 0, 0, 255))
-                d.polygon([(mx - 17, cy0 - 16), (mx + 17, cy0 - 16),
-                           (mx, cy0 + 6)], fill=(0, 0, 0, 255))
+                d.polygon([(mx - 18.5, cy0 - 21), (mx + 18.5, cy0 - 21),
+                           (mx, cy0 - 2)], fill=(0, 0, 0, 255))
             elif deco == "tangerine":              # 레냥: 귤 실루엣
                 d.ellipse([mx - 16, cy0 - 15, mx + 16, cy0 + 13],
                           fill=(0, 0, 0, 255))
@@ -11602,19 +11602,22 @@ class Mascot:
             self._oval(c, mx - 10, y0 - 20, mx - 2, y0 - 16,
                        fill="#ffffff", outline="")
         elif deco == "heart":
-            # 하독: 파란 하트 (몸도 하트 모양이다)
+            # 하독: 파란 하트 (몸도 하트 모양이다). 광은 넣지 않는다.
+            # **꼬리까지 카드 위에** 둔다 — 아래가 잘리면 하트로 안 보인다.
+            # 그래서 이 캐릭터는 card_top 을 넉넉히(34) 잡아 둔다.
             mx = (x0 + x1) / 2
-            body, dark = "#3f6fd6", "#1e2f66"
-            # 끝점을 세 번 겹쳐 찍어 아래를 뾰족하게 한다 — Tk 의 smooth 는
-            # 꼭짓점을 조종점으로 쓰므로 한 번만 찍으면 뭉툭해진다 (지뢰 120).
-            c.create_polygon(mx, y0 + 6, mx, y0 + 6, mx, y0 + 6,
-                             mx - 17, y0 - 10, mx - 17, y0 - 20,
-                             mx - 8, y0 - 24, mx, y0 - 16,
-                             mx + 8, y0 - 24, mx + 17, y0 - 20,
-                             mx + 17, y0 - 10, smooth=True,
-                             fill=body, outline=dark, width=2)
-            self._oval(c, mx - 12, y0 - 19, mx - 5, y0 - 14,
-                       fill="#8fb0f0", outline="")
+            col, hw = "#3f6fd6", 38
+            img = self._soft_heart(hw, col)
+            if img is not None:
+                c.create_image(mx - img.width() / 2,
+                               y0 - 2 - img.height(), image=img, anchor="nw")
+            else:                       # 매끈하게 못 만들면 도형으로
+                r, cy = hw / 4.0, y0 - 2 - hw * 0.75 + hw / 4.0
+                for ex in (mx - hw / 4.0, mx + hw / 4.0):
+                    self._oval(c, ex - r, cy - r, ex + r, cy + r,
+                               fill=col, outline="")
+                c.create_polygon(mx - hw / 2.0, cy, mx + hw / 2.0, cy,
+                                 mx, y0 - 2, fill=col, outline="")
         elif deco == "tangerine":
             # 레냥: 귤 한 알 (열매 + 초록 꼭지잎)
             mx = (x0 + x1) / 2
@@ -15027,6 +15030,46 @@ class Mascot:
         self._soft_cache[ck] = got
         return got
 
+    def _soft_heart(self, w, fill, pad=2):
+        """매끈한 납작 하트 한 장 (캐시). 실패하면 None.
+
+        흔한 하트 = **동그라미 둘 + 아래 세모**. Tk 로 그리면 셋이 만나는
+        자리가 계단지므로 4배로 그려 줄이고 가장자리를 키 색과 섞는다
+        (지뢰 65·124 — 카드·말풍선이 쓰는 그 방법).
+
+        가로 w 를 주면 높이는 0.75w 가 된다 (흔한 하트의 비율).
+        """
+        w = int(round(w))
+        h = int(round(w * 0.75))
+        ck = ("heart", w, fill, pad, self.canvas_bg)
+        got = self._soft_cache.get(ck)
+        if got is not None:
+            return got
+        try:
+            S = 4
+            iw, ih = w + pad * 2, h + pad * 2
+            im = Image.new("RGBA", (iw * S, ih * S), (0, 0, 0, 0))
+            d = ImageDraw.Draw(im)
+            o = pad * S
+            W, H = w * S, h * S
+            r = W / 4.0
+            for cx in (o + r, o + W - r):
+                d.ellipse([cx - r, o, cx + r, o + 2 * r], fill=fill)
+            d.polygon([(o, o + r), (o + W, o + r), (o + W / 2.0, o + H)],
+                      fill=fill)
+            im = im.resize((iw, ih), Image.LANCZOS)
+            key2 = tuple(int(str(self.canvas_bg)[i:i + 2], 16)
+                         for i in (1, 3, 5))
+            got = ImageTk.PhotoImage(flat_on_key(im, key2))
+            got._pil_src = im        # 매끈 경로의 시트가 알아보게 (지뢰 128)
+            if len(self._soft_cache) > 240:
+                for old in list(self._soft_cache)[:120]:
+                    self._soft_cache.pop(old, None)
+            self._soft_cache[ck] = got
+        except Exception:
+            return None
+        return got
+
     def _soft_circle(self, cv, cx, cy, r, fill, outline, lw=None):
         """매끈한 동그라미 (카드 위 노래·환경음 단추). 실패하면 Tk 원으로."""
         d = int(round(r * 2))
@@ -17979,12 +18022,10 @@ class Mascot:
                                   mx + 18, y + 13, mx + 7, y + 24,
                                   fill="#86c8ee", outline="#3f5560", width=2)
             elif deco == "heart":              # 하독: 파란 하트
-                cv.create_polygon(mx, y + 26, mx, y + 26, mx, y + 26,
-                                  mx - 19, y + 8, mx - 19, y - 3,
-                                  mx - 9, y - 8, mx, y + 1,
-                                  mx + 9, y - 8, mx + 19, y - 3,
-                                  mx + 19, y + 8, smooth=True,
-                                  fill="#3f6fd6", outline="#1e2f66", width=2)
+                img2 = self._soft_heart(42, "#3f6fd6")
+                if img2 is not None:
+                    cv.create_image(mx - img2.width() / 2, y - 9,
+                                    image=img2, anchor="nw")
             elif deco == "tangerine":          # 레냥: 귤 한 알
                 self._oval(cv, mx - 19, y - 8, mx + 19, y + 24,
                                fill="#f5a623", outline="#c97c12", width=2)
