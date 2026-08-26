@@ -1,7 +1,7 @@
 {
- "version": 1787705679,
+ "version": 1787709932,
  "files": {
-  "mascot.py": "89c7c27e06dcc3d628d5f52eae9249b85e8599e8fd5ed1583c65a0d18ceefddb",
+  "mascot.py": "018be95a9e3a5d7bb3d8bd20d600d438dc46a9ad7d7710fb8a518fa457c6946c",
   "parts_hadok/arm_key.png": "6479edce93c2b672186c4a647eab3dcce721d3e796ca1d9ebddfb6ff657fca42",
   "parts_hadok/arm_pen.png": "d43a3882b258834907a512bd53ac4549f0f3d735340bfb8087f1b56428915a90",
   "parts_hadok/arm_right.png": "a40515ea55a20c7549b610f368065ec0f13901c878a8a36b0ed6ee23cf9473f8",
