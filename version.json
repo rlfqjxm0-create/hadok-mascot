@@ -1,7 +1,7 @@
 {
- "version": 1788532706,
+ "version": 1788585828,
  "files": {
-  "mascot.py": "264fd99650e8b0e04773255995ab28a8420d7c105c6aecf9ee5aa22dc44bb578",
+  "mascot.py": "8a55194639b9bb7a38840c6ef6a32c1d82192d544cbb389bb41f485dfd097f98",
   "parts_hadok/arm_key.png": "0a258a5c76b0d7cde4da894426fc84ba7e404b3432b1572918e2fc7d4da30e4e",
   "parts_hadok/arm_pen.png": "f8d710b51a0d5b49591d2239ef8532466e7050bc121676b564f3cde826d50eed",
   "parts_hadok/arm_right.png": "fdc721a3768d8bbd1b51f66f48358978be76dace594fa5a3b69514b87d168cc2",
@@ -13,7 +13,7 @@
   "parts_hadok/chip_meta.json": "19d1e6c8695852c7445dbb541df4050fb3d0ca7eb0fcbfb71f30cd96c3c757d2",
   "parts_hadok/chip_movie.png": "43bfa1493af45a8adc05b455acda466b56cad4394229cd8a706ae5cde09ed642",
   "parts_hadok/chip_spoon.png": "9c1f69af5de27a78fcff161bc8cacbe21aa3ce8cc5b8ea8294517ae23925f08f",
-  "parts_hadok/config.json": "c7393c25582f05874dc9d9ee3893d2a5d1da52b4a3cdada8e2b7f5cfd09b2b82",
+  "parts_hadok/config.json": "24d8498722b9dcc08d0d9ba7d45d728328dd11f673d6a80b6d0bf863c1ef7e35",
   "parts_hadok/config.json.bak": "c7393c25582f05874dc9d9ee3893d2a5d1da52b4a3cdada8e2b7f5cfd09b2b82",
   "parts_hadok/desk.png": "dd37ad46240fcb42bab952e3753321d71d42bd604554341984f954d0595010df",
   "parts_hadok/eyes_closed.png": "521ffef8a2ca53714f28830b5b5be2fe6687e43205b9b7eb71968ee06fc941d3",
@@ -531,7 +531,11 @@
   "youtube_player.py": "9bf9c57c6b368e5ccb2765fb2fca423ea766c23596b606e52bc068046c8c8eac"
  },
  "notes": [
-  "캐릭터가 가끔 깜빡이면서 거의 안 보이고 그 자리를 눌러도 반응이 없던 것을 고쳤어요 — 펜(윈도우 잉크)·작업 보기처럼 화면을 덮는 창과 계속 자리 싸움을 하던 게 원인이었어요"
- ],
- "silent": true
+  "재생목록 주소를 넣으면 이제 전곡이 이어서 나와요 — 예전에는 첫 곡만 되풀이됐어요. 목록 줄 왼쪽 동그라미를 누르면 그 안의 곡이 펼쳐지고, 곡을 눌러 바로 들을 수 있어요",
+  "친구들의 플레이리스트에서도 영상 보기가 돼요 (창 위쪽 사람 단추 → 아래 캠코더 단추). 예전에는 눌러도 창만 커지고 영상이 안 붙었어요",
+  "타이머를 끈 친구의 플레이리스트도 들을 수 있어요 — 그 줄에는 '오프라인'이라고 적혀요. 그리고 친구 목록이 훨씬 빨리 떠요 (미리 받아 두었다가 바로 보여 줘요)",
+  "홈에 처음 들어갔을 때 캐릭터들이 사라졌다 나타났다 번쩍이던 것을 고쳤어요 — 앉은 그림을 받아 오는 동안 그림 기억이 지워지던 게 원인이었어요",
+  "뽀모도로 한 사이클이 끝난 뒤 말풍선이 눌러도 안 사라지던 것을 고쳤어요 — 글자를 키운 분에게는 '다시 시작' 단추가 아예 안 그려지고 있었어요",
+  "맥에서도 유튜브 로그인과 영상 보기가 돼요. 로그인해 두면 다음부터 그 계정으로 나와요"
+ ]
 }
