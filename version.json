@@ -1,7 +1,7 @@
 {
- "version": 1788726199,
+ "version": 1788727927,
  "files": {
-  "mascot.py": "02e63428c3345b2653e8fc8994dbdd4ee3e74f47416ef6888484979af473573f",
+  "mascot.py": "40e2d69a261e74ae76579d44856c5054d112cb612ad2f0e0bd4bb11015aec150",
   "parts_hadok/arm_key.png": "0a258a5c76b0d7cde4da894426fc84ba7e404b3432b1572918e2fc7d4da30e4e",
   "parts_hadok/arm_pen.png": "f8d710b51a0d5b49591d2239ef8532466e7050bc121676b564f3cde826d50eed",
   "parts_hadok/arm_right.png": "fdc721a3768d8bbd1b51f66f48358978be76dace594fa5a3b69514b87d168cc2",
@@ -13,7 +13,7 @@
   "parts_hadok/chip_meta.json": "19d1e6c8695852c7445dbb541df4050fb3d0ca7eb0fcbfb71f30cd96c3c757d2",
   "parts_hadok/chip_movie.png": "43bfa1493af45a8adc05b455acda466b56cad4394229cd8a706ae5cde09ed642",
   "parts_hadok/chip_spoon.png": "9c1f69af5de27a78fcff161bc8cacbe21aa3ce8cc5b8ea8294517ae23925f08f",
-  "parts_hadok/config.json": "24d8498722b9dcc08d0d9ba7d45d728328dd11f673d6a80b6d0bf863c1ef7e35",
+  "parts_hadok/config.json": "d12fe04278d5909eb55e263839df7f7b527b111eef4261738d5c1f8fd3bb52f4",
   "parts_hadok/config.json.bak": "c7393c25582f05874dc9d9ee3893d2a5d1da52b4a3cdada8e2b7f5cfd09b2b82",
   "parts_hadok/crown.png": "b1b7426a0222ac294a782cb06db6c9c4aba4e660591dd1761dc9e4da050175fc",
   "parts_hadok/desk.png": "dd37ad46240fcb42bab952e3753321d71d42bd604554341984f954d0595010df",
@@ -537,12 +537,6 @@
   "stickers/__init__.py": "d77e3dc92cb353dced8d192c140643c6458bc3901facdf2e0a0d0830fa4244b7",
   "youtube_player.py": "9bf9c57c6b368e5ccb2765fb2fca423ea766c23596b606e52bc068046c8c8eac"
  },
- "notes": [
-  "뽀모도로 창 ✿ 메뉴에 '소리 조절' — 알림음마다 게이지로 크기를 맞추고 바로 들어볼 수 있어요 (기본은 더 크게)",
-  "플레이리스트에 정지(■) 단추 — 누르면 재생기가 꺼지고 타이머 위 재생 줄도 사라져요 (환경음이 켜져 있어도)",
-  "같이하기 중에 앱을 끄면 이제 친구들 화면에 퇴장 인사(손 흔들기)가 나와요 — 전에는 8분 뒤 조용히 빠졌어요",
-  "홈 '오늘 다 같이' 목표가 40시간이 됐어요",
-  "폼(변신)을 입었을 때 도구로 넣은 소품이 안 보이던 것을 고쳤어요",
-  "깅규·하독에 빠져 있던 왕관·고깔·하늘 그림을 채우고, 전체 점검으로 숨은 오류(쓰다듬기 손 그림 등)를 고쳤어요"
- ]
+ "notes": [],
+ "silent": true
 }
